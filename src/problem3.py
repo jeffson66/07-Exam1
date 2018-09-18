@@ -3,7 +3,7 @@ Exam 1, problem 3.
 
 Authors: David Mutchler, Vibha Alangar, Valerie Galluzzi, Mark Hays,
          Amanda Stouder, their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+"""  # Lin Jiafan
 
 import rosegraphics as rg
 
@@ -43,50 +43,26 @@ def run_test_problem3():
 
 
 def problem3(point, length, delta, window):
-    """
-    See   problem3_picture.pdf   in this project for pictures
-    that may help you better understand the following specification:
-
-    What comes in:
-      -- An rg.Point.
-      -- Two positive integers
-      -- An rg.RoseWindow.
-    What goes out:  Nothing (i.e., None).
-    Side effects:  Draws, on the given rg.RoseWindow:
-
-      -- A VERTICAL rg.Line for which:
-           -- Its topmost point is the given point.
-           -- Its length is the given length.
-           -- Its color is 'black'.
-           -- Its thickness is 3.
-
-      -- Several HORIZONTAL rg.Lines such that:
-           -- All the horizontal lines have their leftmost point
-                on the vertical line.  SEE THE PICTURES.
-           -- For the FIRST of these HORIZONTAL lines:
-                -- Its leftmost point is the given point.
-                -- Its length is the given length.
-           -- Each SUBSEQUENT HORIZONTAL rg.Line is  delta  pixels
-                directly below the previous rg.Line (where delta is a parameter)
-                and 20 pixels longer than the previous rg.Line.
-           -- All the HORIZONTAL lines have thickness 3.
-           -- The 1st, 4th, 7th, etc rg.Lines have color 'magenta',
-              The 2nd, 5th, 8th, etc rg.Lines have color 'cyan'
-              The 3rd, 6th, 9th, etc rg.Lines have color 'spring green'
-
-      NOTE: The NUMBER of lines to draw is determined by the facts that:
-        -- The vertical line has the given length.
-        -- All horizontal lines have their left endpoint on the vertical line.
-        -- The distance between horizontal lines is the given delta.
-
-      Must render but   ** NOT close **   the window.
-
-    Type hints:
-      :type point:   rg.Point
-      :type length:  int
-      :type delta:   int
-      :type window:  rg.RoseWindow
-    """
+    line = rg.Line(point, rg.Point(point.x, point.y + length))
+    line.thickness = 5
+    line.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
+    line = rg.Line(point, rg.Point(point.x + length, point.y ))
+    line.attach_to(window)
+    for k in range(length//delta):
+        line = rg.Line(rg.Point(point.x, point.y + delta), rg.Point(point.x + length + delta, point.y + delta))
+        line.attach_to(window)
+        if delta% 2 ==0:
+            line.color = 'blue'
+        elif delta% 3 ==0:
+            line.color = 'red'
+        else:
+            line.color = 'yellow'
+        window.render()
+        delta = delta + 25
+        window.continue_on_mouse_click()
+    window.close_on_mouse_click()
     # --------------------------------------------------------------------------
     # TODO: 2. Implement and test this function.
     # TODO (continued):  IMPORTANT: Use this ITERATIVE ENHANCEMENT PLAN:

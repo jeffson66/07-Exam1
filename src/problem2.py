@@ -3,7 +3,7 @@ Exam 1, problem 2.
 
 Authors: David Mutchler, Vibha Alangar, Valerie Galluzzi, Mark Hays,
          Amanda Stouder, their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+"""  # Lin Jiafan
 
 import testing_helper
 import time
@@ -284,31 +284,30 @@ def run_test_problem2b():
 
 
 def problem2b(a, b, x):
-    """
-    What comes in:  Positive integers a, b and x, with a <= b.
-    What goes out:
-      -- Returns the sum of all the integers from a to b, inclusive,
-           whose number of factors is greater than or equal to x.
-    Side effects:   None.
-    Examples:
-      -- problem1b(13, 25, 5) returns 78 because:
-           - 13 has 2 factors (namely: 1, 13)
-           - 14 has 4 factors (namely: 1, 2, 7, 14)
-           - 15 has 4 factors (namely: 1, 3, 5, 15)
-           - 16 has 5 factors (namely: 1, 2, 4, 8, 16)
-           - 17 has 2 factors (namely: 1, 17)
-           - 18 has 6 factors (namely: 1, 2, 3, 6, 9, 18)
-           - 19 has 2 factors (namely: 1, 19)
-           - 20 has 6 factors (namely: 1, 2, 4, 5, 10, 20)
-           - 21 has 4 factors (namely: 1, 3, 7, 21)
-           - 22 has 4 factors (namely: 1, 2, 11, 22)
-           - 23 has 2 factors (namely: 1, 23)
-           - 24 has 8 factors (namely: 1, 2, 3, 4, 6, 8, 12, 24)
-           - 25 has 3 factors (namely: 1, 5, 25)
-         so the integers from 13 to 25, inclusive, whose number of factors
-         is great than or equal to 5 are: 16, 18, 20, and 24,
-         and the sum   16 + 18 + 20 + 24   is 78.
-     """
+    sum = 0
+    tempsum = 0
+    for k in range(b - a + 1):
+        c = 1
+        count = 0
+        while c <= a:
+            if a % c == 0:
+                c = c + 1
+                count = count + 1
+            if count >= x:
+                tempsum = a
+            else:
+                tempsum = 0
+            sum = tempsum + sum
+        a = a + 1
+
+
+    return sum
+
+
+
+
+
+
     ############################################################################
     # TODO: 4. Implement and test this function.  See the IMPORTANT NOTE below!
     #          Tests have been written for you (above).

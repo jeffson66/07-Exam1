@@ -3,7 +3,7 @@ Exam 1, problem 1.
 
 Authors: David Mutchler, Vibha Alangar, Valerie Galluzzi, Mark Hays,
          Amanda Stouder, their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+"""  # Lin Jiafan.
 
 import rosegraphics as rg
 
@@ -33,6 +33,10 @@ def run_test_problem1a():
     square.fill_color = 'red'
 
     problem1a(rectangle, square, 5, window)
+    line = rg.Line(rg.Point(125, 50), rg.Point(150, 120))
+    line.thickness = 5
+    line.color = 'blue'
+    line.attach_to(window)
     window.continue_on_mouse_click()
 
     rectangle = rg.Rectangle(rg.Point(300, 70), rg.Point(400, 20))
@@ -41,6 +45,11 @@ def run_test_problem1a():
     square = rg.Square(rg.Point(250, 100), 50)
 
     problem1a(rectangle, square, 10, window)
+    line = rg.Line(rg.Point(350, 20), rg.Point(250, 100))
+    line.thickness = 8
+    line.color = 'magenta'
+    line.attach_to(window)
+    window.render()
     window.close_on_mouse_click()
 
     # A third test on ANOTHER window.
@@ -54,40 +63,25 @@ def run_test_problem1a():
     square.fill_color = 'yellow'
 
     problem1a(rectangle, square, 15, window)
+    line = rg.Line(rg.Point(70, 100), rg.Point(300, 50))
+    line.thickness = 12
+    line.color = 'black'
+    line.attach_to(window)
+    window.render()
     window.close_on_mouse_click()
 
 
 def problem1a(rectangle, square, thickness, window):
-    """
-    See   problem1a_picture.pdf   in this project for pictures
-    that may help you better understand the following specification:
-    
-    What comes in:
-      -- An rg.Rectangle.
-      -- An rg.Square.
-      -- A positive integer
-      -- An rg.RoseWindow.
-    What goes out:  Nothing (i.e., None).
-    Side effects:
-      -- Draws, on the given rg.RoseWindow:
-           -- The given rg.Rectangle.
-           -- The given rg.Square.
-           -- An rg.Line for which:
-               -- One endpoint is the center of the given rg.Square
-               -- The other endpoint is the midpoint of the top edge
-                    of the given rg.Rectangle.  (SEE THE PICTURES.)
-               -- Its thickness is the given thickness.
-               -- Its color is the outline color of the given rg.Rectangle.
-
-      Note: Attach the rg.Line  AFTER  attaching the rg.Rectangle and rg.Square.
-      Must render but   ** NOT close **   the window.
-
-    Type hints:
-      :type rectangle: rg.Rectangle
-      :type square:    rg.Square
-      :type thickness: int
-      :type window:    rg.RoseWindow
-    """
+    square.attach_to(window)
+    rectangle.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
+    thickness
+    rg.Point(100, 100)
+    rg.Point(50, 250)
+    window.render()
+    window.continue_on_mouse_click()
+    window.render()
     # --------------------------------------------------------------------------
     # TODO: 2. Implement and test this function.  SEE THE PICTURES in the PDF!
     #          Tests have been written for you (above).
@@ -123,6 +117,11 @@ def run_test_problem1b():
 
 
 def problem1b(point, win, width, height, color):
+    ellipse = rg.Ellipse(point, width, height)
+    ellipse.attach_to(win)
+    ellipse.fill_color = color
+    win.render()
+    win.close_on_mouse_click
     """
     See   problem1b_picture.pdf   in this project for pictures
     that may help you better understand the following specification:
